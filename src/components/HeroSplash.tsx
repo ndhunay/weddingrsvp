@@ -38,7 +38,7 @@ export function HeroSplash({ nextHref }: Props) {
 
       {/* Circular arrow button */}
       {nextHref && (
-        <div className="absolute bottom-10 left-0 right-0 flex justify-center z-10">
+        <div className="absolute bottom-20 left-0 right-0 flex justify-center z-10">
           <Link
             href={nextHref}
             aria-label="Continue to invitation"

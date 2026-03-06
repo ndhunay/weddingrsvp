@@ -4,7 +4,7 @@ import {
   getInvitationsByFamilyId,
   getEvents,
 } from "@/lib/sheets";
-import { EventCard } from "@/components/EventCard";
+import { EventsList } from "@/components/EventsList";
 
 interface Props {
   params: Promise<{ token: string }>;
@@ -26,32 +26,16 @@ export default async function EventsPage({ params }: Props) {
   const invitedEventIds = new Set(invitations.map((i) => i.event_id));
   const invitedEvents = allEvents.filter((e) => invitedEventIds.has(e.event_id));
 
-  return (
-    <div className="max-w-3xl mx-auto px-4 py-10">
-      <div className="text-center mb-10">
-        <p className="text-rose-700 uppercase tracking-widest text-sm mb-2">
-          Your Invitation
-        </p>
-        <h1 className="text-4xl font-serif text-stone-800">Events</h1>
-      </div>
-
-      {invitedEvents.length === 0 ? (
-        <p className="text-center text-stone-500 text-lg py-16">
+  if (invitedEvents.length === 0) {
+    return (
+      <div className="bg-stone-950 min-h-screen flex items-center justify-center px-6 text-center">
+        <p className="text-white/50 text-lg">
           No events found for your invitation. Please contact the family for
           assistance.
         </p>
-      ) : (
-        <div className="space-y-6">
-          {invitedEvents.map((event) => (
-            <div
-              key={event.event_id}
-              className="rounded-2xl overflow-hidden shadow-sm border border-stone-200"
-            >
-              <EventCard event={event} />
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
+      </div>
+    );
+  }
+
+  return <EventsList events={invitedEvents} />;
 }

@@ -6,8 +6,7 @@ export default function WelcomePage() {
       </h1>
       <p className="text-stone-600 text-lg mb-8 max-w-md">
         To access your personal invitation, please use the unique link sent to
-        your household. If you can&apos;t find it, reach out to the family
-        directly.
+        you. If you can&apos;t find it, reach out to the Dhunay family directly.
       </p>
       <div className="w-16 h-px bg-rose-300" />
       <p className="text-stone-400 text-sm mt-8">
